@@ -60,7 +60,7 @@
   request.onupgradeneeded = function(event) {
   var db = event.target.result;
   // Create an objectStore
-  var transactionStore = db.createObjectStore("transactions", { keyPath: "transactions" });
+  var transactionStore = db.createObjectStore("transactions", { keyPath: "transactionsID", autoIncrement:true });
   //create index
   transactionStore.createIndex("nameIDX", "name"); 
   transactionStore.createIndex("valueIDX", "value"); 

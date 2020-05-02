@@ -3,10 +3,13 @@ let myChart;
 
 function saveRecord(transaction) {
   console.log(transaction)
-    const query = request.transaction(["transactionsDB"], "readwrite");
+    const db = request.result;
+    console.log(request.result)
+    const query = db.transaction(["transactions"], "readwrite");
     const transactionsQuery = query.objectStore("transactions");
     transactionsQuery.add({ name: transaction.name, value: transaction.value });
-}
+  }
+
 
 fetch("/api/transaction")
   .then(response => {
