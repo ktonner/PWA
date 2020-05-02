@@ -46,26 +46,15 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="index.js"></script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("service-worker.js").then(reg => {
-          console.log("We found your service worker file!", reg);
-        });
-      });
-    }
-    // We request a database instance. 
-  const request = window.indexedDB.open("transactionsDB");
-
-  request.onupgradeneeded = function(event) {
-  var db = event.target.result;
-  // Create an objectStore
-  var transactionStore = db.createObjectStore("transactions", { keyPath: "transactionsID", autoIncrement:true });
-  //create index
-  transactionStore.createIndex("nameIDX", "name"); 
-  transactionStore.createIndex("valueIDX", "value"); 
-  }
-  </script>
+  <script src="db.js"></script>
 </body>
-
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js").then(reg => {
+        console.log("We found your service worker file!", reg);
+      });
+    });
+  }
+</script>
 </html>
