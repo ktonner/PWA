@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_kp250xt2:f30n6ggsji2gjkhij2dejkui0a@ds163698.mlab.com:63698/heroku_kp250xt2", { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds163698.mlab.com:63698/heroku_kp250xt2", { useMongoClient:true});
 
 // routes
 app.use(require("./routes/api.js"));
